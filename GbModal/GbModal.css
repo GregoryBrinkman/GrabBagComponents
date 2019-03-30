@@ -1,0 +1,23 @@
+.modal__gb-modal-container {
+    text-align: center;
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid grey;
+    font-family: Helvetica;
+    margin: 3px;
+    width: 30%;
+  }
+  
+  .modal__gb-modal-container:hover {
+    box-shadow: 3px 3px 3px;
+  }
+  
+  .modal__hidden-content {
+    display: none;
+  }
+  
+  .modal__details-btn {
+    background-color: #dedede;
+    padding: 6px;
+    margin-bottom: 8px;
+  }
