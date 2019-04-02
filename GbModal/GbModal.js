@@ -1,10 +1,17 @@
 const currentDocument = document.currentScript.ownerDocument;
+var shadowRoot;
 
 
 
 class GbModal extends HTMLElement {
   constructor() {
     super()
+    console.log('constructor')
+    shadowRoot = this.attachShadow({ mode: 'open' });
+    const template = currentDocument.querySelector('#gb-modal-template');
+    const instance = template.content.cloneNode(true);
+    shadowRoot.appendChild(instance);
+    
     //var shadowRoot = this.attachShadow({ mode: 'open' })
     //shadowRoot.innerHTML = `<h2>hello world!</h2>`
     // Setup a click listener on <user-card>
@@ -18,7 +25,10 @@ class GbModal extends HTMLElement {
 
   render = (isOpen, title, body) => {
 
-    console.log('modal!')
+
+    console.log(`modal is open? ${isOpen}`)
+    console.log(title)
+    console.log(body)
     
     if(!!isOpen) {
       console.log('modal! OPEN!')
@@ -40,13 +50,11 @@ class GbModal extends HTMLElement {
 
   // Called when element is inserted in DOM
   connectedCallback() {
-    const shadowRoot = this.attachShadow({ mode: 'open' });
+    console.log('connectedCallback')
 
     // Select the template and clone it. Finally attach the cloned node to the shadowDOM's root.
     // Current document needs to be defined to get DOM access to imported HTML
-    const template = currentDocument.querySelector('#gb-modal-template');
-    const instance = template.content.cloneNode(true);
-    shadowRoot.appendChild(instance);
+
 
     // Extract the attribute user-id from our element. 
     // Note that we are going to specify our cards like: 
@@ -55,18 +63,19 @@ class GbModal extends HTMLElement {
     const title = this.getAttribute('title');
     const body = this.getAttribute('body');
 
-    console.log(`modal is open? ${isOpen}`)
-    console.log(title)
-    console.log(body)
+    //console.log(`modal is open? ${isOpen}`)
+    //console.log(title)
+    //console.log(body)
 
     this.render(isOpen, title, body)
 
   }
 
   toggleModal() {
-    console.log(this)
-    console.log(!this.getAttribute('open'))
+    //console.log(this)
+    //console.log(!this.getAttribute('open'))
     this.setAttribute('open', !this.getAttribute('open'))
+    //console.log(this.getAttribute('open'))
   }
 
 
@@ -84,11 +93,6 @@ class GbModal extends HTMLElement {
     const isOpen = this.getAttribute('open');
     const title = this.getAttribute('title');
     const body = this.getAttribute('body');
-
-    console.log(`modal is open? ${isOpen}`)
-    console.log(title)
-    console.log(body)
-
     this.render(isOpen, title, body)
   }
 
