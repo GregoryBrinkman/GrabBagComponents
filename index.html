@@ -29,12 +29,32 @@
     body="This is the body of the modal component. There are many like it, but this one is mine!">
   </gb-modal>
 
+  <popup-info 
+  img="https://article.images.consumerreports.org/prod/content/dam/CRO%20Images%202018/Health/April/CR-Health-Inlinehero-bananas-good-for-you-0418" 
+  text="Your card validation code (CVC)
+  is an extra security feature — it is the last 3 or 4 numbers on the
+  back of your card.">
+
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
   </script>
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+  <script>
+    class CustomElement extends HTMLElement {
+      constructor(...args) {
+        const self = super(...args);
+        // self functionality written in here
+        // self.addEventListener(...)
+        // return the right context
+        return self;
+      }
+    }
+  </script>
+  <script type="module" src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/"></script>
+  <script type="module" src="components/PopUpInfo-Example/PopUpInfo.js"></script>
+
 </body>
 
 </html>
